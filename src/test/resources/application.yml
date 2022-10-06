@@ -1,0 +1,5 @@
+spring:
+  ldap:
+    base: dc=example,dc=org
+    username: cn=admin,dc=example,dc=org
+    password: adminpassword
