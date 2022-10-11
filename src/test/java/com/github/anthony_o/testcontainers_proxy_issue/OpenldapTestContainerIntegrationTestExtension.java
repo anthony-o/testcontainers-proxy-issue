@@ -26,9 +26,7 @@ public class OpenldapTestContainerIntegrationTestExtension implements BeforeAllC
     public void beforeAll(ExtensionContext context) {
         final var imageFromDockerfile = new ImageFromDockerfile()
                 .withFileFromPath(".", Path.of("src", "main", "docker"));
-        final String dockerImagePrefixEnvVariable = System.getenv("DOCKER_IMAGE_PREFIX");
-        // Add argument builder
-        imageFromDockerfile.withBuildArg("DOCKER_IMAGE_PREFIX", dockerImagePrefixEnvVariable);
+
         openldapContainer = new GenericContainer<>(imageFromDockerfile)
                 .withExposedPorts(OPENLDAP_EXPOSED_PORT)
                 .withLogConsumer(new Slf4jLogConsumer(LOG))
